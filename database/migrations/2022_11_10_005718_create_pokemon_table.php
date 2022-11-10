@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreatePokemonTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id('ID');
-            $table->string('name')->unique();
+        Schema::create('pokemon', function (Blueprint $table) {
+            $table->id();
+            $table->integer('pokemon_id');
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('pokemon');
     }
 }
